@@ -13,10 +13,9 @@ node {
     
             def customImage = docker.build("10.50.6.29:9001/ubuntu")
 
-            customImage.inside {
-                sh 'echo test'
-            }
-            
+            docker.image('gradle').withRun {c ->
+                sh 'gradle --version'
+             }
             /* Push the container to the custom Registry */
             customImage.push()
         }
