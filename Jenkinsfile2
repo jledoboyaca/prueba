@@ -17,7 +17,28 @@ pipeline {
       steps {
       	sh 'docker build -t shanem/spring-petclinic:latest .'
       }
+    }Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent none
+    stages {
+        stage('Back-end') {
+            agent {
+                docker { image 'maven:3.9.3-eclipse-temurin-17' }
+            }
+            steps {
+                sh 'mvn --version'
+            }
+        }
+        stage('Front-end') {
+            agent {
+                docker { image 'node:18.16.0-alpine' }
+            }
+            steps {
+                sh 'node --version'
+            }
+        }
     }
+}
     stage('Docker Push') {
     	agent any
       steps {
