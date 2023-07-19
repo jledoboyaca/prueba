@@ -1,20 +1,13 @@
 node {
-    def mvnHome
+    agent {
+        docker { image 'maven:3.9.3-eclipse-temurin-17' }
+    }
     stage('Preparation') { // for display purposes
         // Get some code from a GitHub repository
         checkout scm
     }
     stage('Build') {
         docker.build("10.50.6.29:9001/ubuntu")
-    }
-
-    stage('Back-end') {
-        agent {
-            docker { image 'maven:3.9.3-eclipse-temurin-17' }
-        }
-        steps {
-            sh 'mvn --version'
-        }
     }
 
     stage('Publish') {
