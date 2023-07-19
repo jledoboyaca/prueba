@@ -7,7 +7,7 @@ node {
         checkout scm
     }
     stage('Build') {
-        docker.build("10.50.6.29:9001/ubuntu")
+        sh "gradlew --version"
     }
 
     stage('Publish') {
