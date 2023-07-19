@@ -7,7 +7,7 @@ node {
         checkout scm
     }
     stage('Build') {
-        sh "gradlew --version"
+        sh "mvn --version"
     }
 
     stage('Publish') {
