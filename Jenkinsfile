@@ -17,7 +17,7 @@ node {
                     reuseNode true
                 }
             }
-            step {
+            steps {
                 sh 'gradle --version'
             }
     }
