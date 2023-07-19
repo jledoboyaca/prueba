@@ -1,10 +1,7 @@
 pipeline {
     agent none
     stages {
-    stage('Preparation') { // for display purposes
-        // Get some code from a GitHub repository
-        checkout scm
-    }
+
         stage('Back-end') {
             agent {
                 docker { image 'maven:3.9.3-eclipse-temurin-17' }
