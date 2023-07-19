@@ -9,7 +9,7 @@ node {
     }
     
     stage('Publish') {
-        docker.withServer('tcp://swarm.example.com:2375').withRegistry('http://10.50.6.29:9001', '6fa8ff4b-2f5c-43f2-b070-d87e840ebe31	') {
+        docker.withServer('tcp://swarm.example.com:2375', "dockerserver").withRegistry('http://10.50.6.29:9001', '6fa8ff4b-2f5c-43f2-b070-d87e840ebe31	') {
     
             def customImage = docker.build("10.50.6.29:9001/ubuntu")
 
