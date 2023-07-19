@@ -1,12 +1,7 @@
-pipeline {
-    agent {
-        docker { image 'node:18.16.0-alpine' }
+node {
+    checkout scm
+    docker.image('node:18.16.0-alpine').inside {
+        sh 'make test'
     }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
-    }
+    
 }
