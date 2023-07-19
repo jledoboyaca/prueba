@@ -7,8 +7,8 @@ node {
     stage('Build') {
         docker.build("10.50.6.29:9001/ubuntu")
     }
-    stage('Results') {
-        junit '**/target/surefire-reports/TEST-*.xml'
-        archiveArtifacts 'target/*.jar'
+    stage('Publish') {
+        docker.push("10.50.6.29:9001/ubuntu")
+    
     }
 }
